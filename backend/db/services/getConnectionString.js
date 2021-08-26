@@ -3,7 +3,7 @@ const getConnectionString = () => {
     // pgweb: postgres://postgres:§1§1§1@localhost:5432/memcode
     case 'development':
       return {
-        host: 'localhost', // 'localhost' is the default;
+        host: 'db', // 'localhost' is the default;
         port: 5432, // 5432 is the default;
         database: 'memcode',
         user: process.env['DB_USER'],
@@ -11,7 +11,7 @@ const getConnectionString = () => {
       };
     case 'test':
       return {
-        host: 'localhost', // 'localhost' is the default;
+        host: 'db', // 'localhost' is the default;
         port: 5432, // 5432 is the default;
         database: 'memcode_test',
         user: process.env['DB_USER'],

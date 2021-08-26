@@ -9,6 +9,7 @@ const db = pgPackage(getConnectionString());
 
 db.connect()
   .then((obj) => {
+      console.log('DB connected');
     obj.done();
   })
   .catch((error) => {

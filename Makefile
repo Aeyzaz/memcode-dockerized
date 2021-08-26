@@ -13,22 +13,22 @@ frontend-webpack:
 
 # database
 db-drop:
-	psql -U postgres -c 'DROP DATABASE IF EXISTS memcode'
+	psql -h db -U postgres -c 'DROP DATABASE IF EXISTS memcode'
 db-reset:
 	# 'database=' here is a variable used in schema.sql (-v).
-	psql -v database=memcode -U postgres -f backend/db/schema.sql
+	psql -h db -v database=memcode -U postgres -f backend/db/schema.sql
 db-migrate:
-	psql -v database=memcode -U postgres -f backend/db/migrations/14.sql
+	psql -h db -v database=memcode -U postgres -f backend/db/migrations/14.sql
 
 # dump and restore data
 db-dump:
-	pg_dump -o memcode -U postgres > backend/db/dump.sql
+	pg_dump -h db -o memcode -U postgres > backend/db/dump.sql
 db-restore:
-	psql -d memcode -U postgres < backend/db/dump.sql
+	psql -h db -d memcode -U postgres < backend/db/dump.sql
 
 # test
 test-db-reset:
-	psql -v database=memcode_test -U postgres -f backend/db/schema.sql
+	psql -h db -v database=memcode_test -U postgres -f backend/db/schema.sql
 test-backend:
 	cd backend; NODE_ENV=test ../node_modules/.bin/mocha --recursive ./webpacked/test --require babel-polyfill --require source-map-support/register
 test-frontend:
