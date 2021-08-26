@@ -1,0 +1,4 @@
+/memcode/node_modules
+/memcode/env.js
+/memcode/backend/db/dump.sql
+/pgdata/
